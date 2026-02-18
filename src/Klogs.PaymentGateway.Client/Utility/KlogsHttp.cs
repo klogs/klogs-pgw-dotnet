@@ -46,7 +46,7 @@ namespace Klogs.PaymentGateway.Client.Utility
                 };
 
                 var randomString = CreateRandomString();
-                var timestamp = DateTime.UtcNow.Ticks.ToString();
+                var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString();
 
                 _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Api-Key", apiKey);
                 _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Klogs-Rnd", randomString);
