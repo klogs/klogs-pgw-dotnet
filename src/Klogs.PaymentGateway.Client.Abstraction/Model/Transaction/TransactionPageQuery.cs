@@ -10,7 +10,7 @@ namespace Klogs.PaymentGateway.Client.Abstraction.Model.Transaction
 
         public DateTime? EndedAt { get; set; }
 
-        public string ApplicationCode { get; set; }
+        public string PaymentChannelCode { get; set; }
 
         public string PaymentProviderId { get; set; }
 

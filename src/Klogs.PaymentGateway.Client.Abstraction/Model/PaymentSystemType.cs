@@ -3,7 +3,7 @@
     public enum PaymentSystemType
     {
         VirtualPos,
-        PaymentInstitution,
+        PaymentFacilitator,
         ShoppingLoan,
         DigitalPay,
         Other

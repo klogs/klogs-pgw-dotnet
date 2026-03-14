@@ -29,7 +29,7 @@ namespace Klogs.PaymentGateway.Client.Abstraction.Model.Transaction
 
         public string PaymentMethod { get; set; }
 
-        public NameCodeModel Application { get; set; }
+        public NameCodeModel PaymentChannel { get; set; }
 
         public TransactionUser User { get; set; }
 

@@ -9,7 +9,7 @@ namespace Klogs.PaymentGateway.Client.Abstraction.Model.HostedPayment
 
         public string Currency { get; set; }
 
-        public string Reference { get; set; }
+        public string ReferenceCode { get; set; }
 
         public Address Invoice { get; set; }
 

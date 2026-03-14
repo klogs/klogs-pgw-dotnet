@@ -42,12 +42,12 @@ namespace Klogs.PaymentGateway.Client.Services
 
         public Task<Response> RefundAsync(RefundRequest model)
         {
-            return PostAsync<Response>("/api/cardPayment/refund", model);
+            return PostAsync<Response>("/api/trx/refund", model);
         }
 
         public Task<Response> VoidAsync(VoidRequest model)
         {
-            return PostAsync<Response>("/api/cardPayment/void", model);
+            return PostAsync<Response>("/api/trx/void", model);
         }
     }
 }
