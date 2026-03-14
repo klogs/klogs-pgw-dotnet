@@ -13,9 +13,17 @@ namespace Klogs.PaymentGateway.Client.Abstraction.Model.CardPayment
 
         public string ReferenceCode { get; set; }
 
+        public CreditCard Card { get; set; }
+
         public bool UseStoredCard { get; set; }
 
-        public CreditCard Card { get; set; }
+        public string OwnerKey { get; set; }
+
+        public Guid? CardId { get; set; }
+
+        public bool SaveCard { get; set; }
+
+        public string CustomerIp { get; set; }
 
         public Reward Reward { get; set; }
 
@@ -39,7 +47,7 @@ namespace Klogs.PaymentGateway.Client.Abstraction.Model.CardPayment
 
         public SalesType? ChargeType { get; set; }
 
-        public Guid? PaymentSystemId { get; set; }
+        public string PaymentSystemCode { get; set; }
 
         public string NationalNumber { get; set; }
 

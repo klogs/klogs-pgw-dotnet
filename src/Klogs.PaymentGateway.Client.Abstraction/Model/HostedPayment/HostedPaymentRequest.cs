@@ -33,8 +33,6 @@ namespace Klogs.PaymentGateway.Client.Abstraction.Model.HostedPayment
 
         public Product[] Products { get; set; }
 
-        public Guid? PaymentSystemId { get; set; }
-
-        public Guid? PaymentSystemGroupId { get; set; }
+        public string PaymentMethod { get; set; } = "klogs";
     }
 }

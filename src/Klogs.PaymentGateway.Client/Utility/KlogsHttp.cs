@@ -34,7 +34,7 @@ namespace Klogs.PaymentGateway.Client.Utility
             }
         }
 
-        internal static HttpClient GetOrCreate(string endpoint, string apiKey, string secretKey, Dictionary<string, string> additionalHeaders)
+        internal static HttpClient GetOrCreate(string endpoint, string apiKey, string secretKey)
         {
             Monitor.Enter(_lock);
 
@@ -52,14 +52,6 @@ namespace Klogs.PaymentGateway.Client.Utility
                 _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Klogs-Rnd", randomString);
                 _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Klogs-Timestamp", timestamp);
                 _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Klogs-Signature", CreateHash(string.Concat(apiKey, randomString, timestamp), secretKey));
-
-                if (additionalHeaders != null)
-                {
-                    foreach (var header in additionalHeaders)
-                    {
-                        _httpClient.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
-                    }
-                }
             }
 
             Monitor.Exit(_lock);

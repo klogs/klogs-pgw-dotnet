@@ -12,7 +12,7 @@ namespace Klogs.PaymentGateway.Client.Services
     {
         public CardPaymentHttpClient(HttpClient httpClient) : base(httpClient)
         {
-            
+
         }
 
         public Task<PaymentTokenResponse> CreatePaymentTokenAsync()
@@ -37,11 +37,22 @@ namespace Klogs.PaymentGateway.Client.Services
                                                             {
                                                                 amount = model.Amount?.ToString(CultureInfo.InvariantCulture),
                                                                 binNumber = model.BinNumber,
-                                                                currency = model.Currency.Iso4217
-                                                            })
-                                                            .ToString();
+                                                                currency = model.Currency.Iso4217,
+                                                                cardId = model.CardId
+                                                            });
 
-            return GetAsync<CommissionResponse>(requestUri);
+            if (model.ProductCodes != null)
+            {
+                requestUri = requestUri.AddQuery("productCode", model.ProductCodes);
+            }
+
+            if (model.ProductCategoryCodes != null)
+            {
+                requestUri = requestUri.AddQuery("productCategoryCode", model.ProductCategoryCodes);
+            }
+
+
+            return GetAsync<CommissionResponse>(requestUri.ToString());
         }
     }
 }
