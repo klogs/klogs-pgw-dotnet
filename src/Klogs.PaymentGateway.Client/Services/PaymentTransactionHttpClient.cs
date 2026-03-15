@@ -25,21 +25,6 @@ namespace Klogs.PaymentGateway.Client.Services
             });
         }
 
-        public async Task<TransactionListResponse> ListAsync(TransactionPageQuery query)
-        {
-            var requestUri = $"api/trx".ToUri().AddQuery(query).ToString();
-
-            return await GetAsync(requestUri, responseHandler: async response =>
-            {
-                var content = await response.Content.ReadAsStringAsync();
-
-                var responseObj = JsonConvert.DeserializeObject<PagedList<PaymentTransaction>>(content, JsonOptions);
-
-                return new TransactionListResponse { List = responseObj };
-            });
-
-        }
-
         public Task<Response> RefundAsync(RefundRequest model)
         {
             return PostAsync<Response>("/api/trx/refund", model);

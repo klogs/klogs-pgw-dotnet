@@ -6,8 +6,6 @@ namespace Klogs.PaymentGateway.Client.Abstraction
 {
     public interface IPaymentTransactionHttpClient
     {
-        Task<TransactionListResponse> ListAsync(TransactionPageQuery query);
-
         Task<TransactionDetailResponse> DetailAsync(string reference);
 
         Task<Response> VoidAsync(VoidRequest model);
